@@ -1,38 +1,1594 @@
-.App {
-  text-align: center;
+/* ==============================
+   GENERAL STYLING
+============================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: Arial, sans-serif;
+  color: #1e293b;
+  background: #f8fafc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+/* ==============================
+   PUBLIC NAVBAR
+============================== */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 6%;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.navbar li {
+  cursor: pointer;
+}
+
+.navbar button,
+.hero-buttons button {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 6px;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* ==============================
+   PUBLIC HERO SECTION
+============================== */
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 8%;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  line-height: 1.2;
+  margin-bottom: 22px;
+  color: #0f172a;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  color: #64748b;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.hero-buttons button:last-child {
+  background-color: white;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+/* ==============================
+   ADMIN DASHBOARD LAYOUT
+============================== */
+
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 30px 5%;
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+}
+
+.admin-dashboard h1 {
+  font-size: 32px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.admin-dashboard > p {
+  color: #64748b;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.admin-dashboard h2 {
+  color: #0f172a;
+  font-size: 23px;
+}
+
+.admin-dashboard h3 {
+  color: #334155;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.admin-dashboard p {
+  line-height: 1.6;
+}
+
+/* ==============================
+   ADMIN MENU BUTTONS
+============================== */
+
+.admin-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 25px;
+  padding: 0;
+}
+
+.admin-menu button {
+  padding: 12px 18px;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  background: white;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.admin-menu button:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.admin-menu button.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: white;
+}
+
+/* ==============================
+   ADMIN PAGE SECTIONS
+============================== */
+
+.admin-section {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.admin-home {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==============================
+   WELCOME BANNER
+============================== */
+
+.admin-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 32px;
+  margin-bottom: 8px;
+  border-radius: 18px;
+  background: linear-gradient(120deg, #1d4ed8, #3b82f6);
+  color: white;
+}
+
+.admin-welcome .admin-eyebrow {
+  margin-bottom: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #dbeafe;
+}
+
+.admin-welcome h2 {
+  margin: 0 0 12px;
+  color: white;
+  font-size: 28px;
+}
+
+.admin-welcome > div > p:last-child {
+  margin: 0;
+  color: #eff6ff;
+  line-height: 1.7;
+}
+
+.admin-welcome .admin-welcome-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 36px;
+}
+
+/* ==============================
+   DASHBOARD SUMMARY CARDS
+============================== */
+
+.admin-home .admin-stats {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(160px, 1fr)
+  );
+  gap: 18px;
+  margin-bottom: 15px;
+}
+
+.admin-home .admin-stat-card {
+  display: block;
+  width: auto;
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 22px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.admin-home .admin-stat-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  background: #eff6ff;
+  font-size: 22px;
+}
+
+.admin-home .admin-stat-card .admin-stat-label {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.admin-home .admin-stat-card h3 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 30px;
+}
+
+/* ==============================
+   QUICK ACTIONS
+============================== */
+
+.admin-quick-actions {
+  margin-top: 5px;
+}
+
+.admin-quick-actions > h3 {
+  margin-bottom: 8px;
+  color: #0f172a;
+  font-size: 22px;
+}
+
+.admin-quick-actions > p {
+  margin-bottom: 20px;
+  color: #64748b;
+}
+
+.admin-action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.admin-action-grid button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 22px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: white;
+  color: #1e293b;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s, border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.admin-action-grid button:hover {
+  transform: translateY(-3px);
+  border-color: #93c5fd;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.09);
+}
+
+.admin-action-grid button span {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: #eff6ff;
+  font-size: 23px;
+}
+
+.admin-action-grid button strong {
+  font-size: 16px;
+}
+
+.admin-action-grid button small {
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==============================
+   STUDENT / TEACHER / COURSE LISTS
+============================== */
+
+.admin-list-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding: 16px 18px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.admin-list-card p {
+  margin: 4px 0;
+  color: #475569;
+  overflow-wrap: anywhere;
+}
+
+.admin-list-card button {
+  padding: 9px 14px;
+  border: none;
+  border-radius: 7px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-list-card button:hover {
+  background: #fecaca;
+}
+
+/* ==============================
+   ADMIN FORMS
+============================== */
+
+.admin-dashboard form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  width: 100%;
+  max-width: 760px;
+  margin: 15px 0 25px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+.admin-dashboard form input:not([type="checkbox"]),
+.admin-dashboard form select {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  color: #1e293b;
+  font-size: 14px;
+  outline: none;
+}
+
+.admin-dashboard form input:focus,
+.admin-dashboard form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.admin-dashboard form label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.admin-dashboard form input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+/* Form submit buttons only */
+
+.admin-dashboard form button {
+  align-self: flex-start;
+  padding: 11px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-dashboard form button:hover {
+  background: #1d4ed8;
+}
+
+/* ==============================
+   SCHEDULED CLASS CARDS
+============================== */
+
+.admin-dashboard .admin-class-card {
+  margin-bottom: 14px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.admin-dashboard .admin-class-card p {
+  margin: 6px 0;
+  color: #475569;
+  overflow-wrap: anywhere;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 24px 16px;
+  }
+
+  .admin-dashboard h1 {
+    font-size: 27px;
+  }
+
+  .admin-menu {
+    gap: 8px;
+  }
+
+  .admin-menu button {
+    padding: 10px 12px;
+  }
+
+  .admin-welcome {
+    padding: 23px;
+  }
+
+  .admin-welcome h2 {
+    font-size: 23px;
+  }
+
+  .admin-home .admin-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-dashboard form {
+    padding: 18px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+@media (max-width: 480px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 16px 5%;
+  }
+
+  .navbar ul {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 50px 6%;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .admin-menu {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .admin-menu button {
+    width: 100%;
+    padding: 11px 8px;
+    font-size: 12px;
+  }
+
+  .admin-welcome {
+    padding: 20px;
+  }
+
+  .admin-welcome h2 {
+    font-size: 21px;
+  }
+
+  .admin-welcome .admin-welcome-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 24px;
+  }
+
+  .admin-home .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-action-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard form {
+    padding: 15px;
+  }
+}
+/* ==============================
+   MANAGE COURSES PAGE
+============================== */
+
+.admin-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+.admin-course-card {
+  min-width: 0;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+}
+
+.admin-course-card h2 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 22px;
+}
+
+.admin-course-card > p {
+  margin-bottom: 20px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Forms inside course cards */
+
+.admin-course-card form {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 24px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.admin-course-card form input:not([type="checkbox"]),
+.admin-course-card form select {
+  width: 100%;
+  min-height: 44px;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 14px;
+}
+
+.admin-course-card form input:focus,
+.admin-course-card form select:focus {
+  outline: none;
+  border-color: #2563eb;
+  background: #ffffff;
+}
+
+/* Add Subject / Add Batch buttons */
+
+.admin-course-card form button {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-course-card form button:hover {
+  background: #1d4ed8;
+}
+
+/* Subject and batch lists */
+
+.admin-course-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-course-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.admin-course-item strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #1e293b;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.admin-course-item p {
+  color: #64748b;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.admin-course-item button {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 7px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-course-item button:hover {
+  background: #fecaca;
+}
+
+.admin-course-empty {
+  padding: 20px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Mobile layout */
+
+@media (max-width: 768px) {
+  .admin-courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-course-card {
+    padding: 18px;
+  }
+}/* ==============================
+   STUDENT, TEACHER & SCHEDULE LISTS
+============================== */
+
+/* Each list item */
+.admin-section > .admin-list-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  margin: 12px 0;
+  padding: 20px 22px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-section > .admin-list-card:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.08);
+}
+
+/* Information inside the card */
+.admin-section > .admin-list-card > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.admin-section > .admin-list-card p {
+  margin: 5px 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.admin-section > .admin-list-card p strong {
+  color: #1e293b;
+  font-size: 17px;
+}
+
+/* Delete buttons in student and teacher lists */
+.admin-section > .admin-list-card > button {
+  flex-shrink: 0;
+  padding: 9px 15px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.admin-section > .admin-list-card > button:hover {
+  background: #fee2e2;
+}
+
+/* List headings */
+.admin-section > h3 {
+  margin: 28px 0 14px;
+  color: #1e293b;
+  font-size: 20px;
+}
+
+/* Empty list messages */
+.admin-section > p {
+  margin: 12px 0 20px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  color: #64748b;
+  text-align: center;
+}
+
+/* Scheduled classes heading */
+.admin-section > h2 {
+  margin: 10px 0 20px;
+  color: #0f172a;
+}
+
+/* Mobile view */
+@media (max-width: 600px) {
+  .admin-section > .admin-list-card {
+    padding: 15px;
+    gap: 12px;
+  }
+
+  .admin-section > .admin-list-card p strong {
+    font-size: 15px;
+  }
+
+  .admin-section > .admin-list-card > button {
+    padding: 8px 10px;
+  }
+}
+/* =====================================
+   TUTAS LMS - HOMEPAGE
+===================================== */
+
+.home-page {
+  width: 100%;
   min-height: 100vh;
+  background: #f8fafc;
+  color: #1e293b;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+.home-page section {
+  padding: 70px 8%;
+  scroll-margin-top: 80px;
+}
+
+.home-page h2 {
+  color: #172554;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.home-page p {
+  color: #64748b;
+  line-height: 1.7;
+}
+
+/* NAVBAR */
+
+.home-page nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 7%;
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.08);
+}
+
+.home-page nav a {
+  color: #334155;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.home-page nav a:hover {
+  color: #2563eb;
+}
+
+/* HERO - LEARN BETTER, GROW FASTER */
+
+.home-page .hero {
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  padding: 80px 8%;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
 }
 
-.App-link {
-  color: #61dafb;
+.home-page .hero h1 {
+  max-width: 800px;
+  color: #172554;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.home-page .hero p {
+  max-width: 650px;
+  font-size: 18px;
+  margin-bottom: 28px;
+}
+
+.home-page button,
+.home-page .hero a {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.home-page button:hover,
+.home-page .hero a:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* POPULAR COURSES */
+
+.home-page .courses,
+.home-page .popular-courses {
+  background: #ffffff;
+}
+
+.home-page .course-grid,
+.home-page .courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.home-page .course-card {
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.home-page .course-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.12);
+}
+
+.home-page .course-card h3 {
+  color: #1d4ed8;
+  font-size: 20px;
+  margin: 0 0 12px;
+}
+
+.home-page .course-card p {
+  margin-bottom: 18px;
+}
+
+/* ABOUT */
+
+.home-page .about {
+  background: #eff6ff;
+}
+
+.home-page .about p {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 17px;
+}
+
+/* EXPERT TUTORS */
+
+.home-page .tutors,
+.home-page .expert-tutors {
+  background: #f8fafc;
+}
+
+.home-page .tutor-grid,
+.home-page .tutors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 35px;
+}
+
+.home-page .tutor-card {
+  padding: 25px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s;
+}
+
+.home-page .tutor-card:hover {
+  transform: translateY(-5px);
+}
+
+.home-page .tutor-card h3 {
+  color: #172554;
+  margin: 12px 0 8px;
+}
+
+.home-page .tutor-card p {
+  margin: 6px 0;
+}
+
+/* CONTACT US */
+
+.home-page .contact {
+  background: #ffffff;
+}
+
+.home-page .contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 600px;
+  margin: 30px auto 0;
+  padding: 30px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+}
+
+.home-page .contact input,
+.home-page .contact textarea,
+.home-page .contact select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 15px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #1e293b;
+  font: inherit;
+  outline: none;
+}
+
+.home-page .contact input:focus,
+.home-page .contact textarea:focus,
+.home-page .contact select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.home-page .contact textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.home-page .contact button {
+  align-self: flex-start;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+  .home-page .course-grid,
+  .home-page .courses-grid,
+  .home-page .tutor-grid,
+  .home-page .tutors-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 600px) {
+  .home-page nav {
+    flex-wrap: wrap;
+    padding: 15px 5%;
+  }
+
+  .home-page section {
+    padding: 45px 5%;
+  }
+
+  .home-page h2 {
+    font-size: 26px;
+  }
+
+  .home-page .hero {
+    min-height: 350px;
+    padding: 60px 5%;
+  }
+
+  .home-page .hero p {
+    font-size: 16px;
+  }
+
+  .home-page .course-grid,
+  .home-page .courses-grid,
+  .home-page .tutor-grid,
+  .home-page .tutors-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-page .contact form {
+    padding: 20px;
+  }
+}
+/* CONTACT US SECTION */
+
+.contact {
+  padding: 60px 8%;
+  background: #f1f5f9;
+  text-align: center;
+}
+
+.contact h2 {
+  color: #1e3a8a;
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.contact p {
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.contact form {
+  max-width: 550px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+  text-align: left;
+}
+
+.contact form div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.contact label {
+  color: #334155;
+  font-weight: 600;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font: inherit;
+  outline: none;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.contact textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contact button {
+  width: 100%;
+  padding: 14px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact button:hover {
+  background: #1d4ed8;
+}
+
+@media (max-width: 600px) {
+  .contact {
+    padding: 40px 5%;
+  }
+
+  .contact h2 {
+    font-size: 26px;
+  }
+
+  .contact form {
+    padding: 20px;
+  }
+}
+/* MEET OUR EXPERT TUTORS */
+
+.tutors {
+  padding: 70px 8%;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.tutors h2 {
+  color: #1e3a8a;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.tutors > p {
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+.tutor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.tutor-card {
+  padding: 35px 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.tutor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.12);
+}
+
+.tutor-card h3 {
+  color: #1d4ed8;
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.tutor-card p {
+  color: #64748b;
+  font-size: 15px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .tutors {
+    padding: 45px 5%;
+  }
+
+  .tutors h2 {
+    font-size: 26px;
+  }
+
+  .tutor-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+/* ABOUT TUTAS LMS */
+
+.about {
+  padding: 70px 8%;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+  text-align: center;
+}
+
+.about h2 {
+  color: #1e3a8a;
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.about-description {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  color: #475569;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.about h3 {
+  color: #1e40af;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.about-list {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  text-align: left;
+}
+
+.about-list li {
+  padding: 18px;
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.about-list li::before {
+  content: "✓";
+  color: #2563eb;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+@media (max-width: 600px) {
+  .about {
+    padding: 45px 5%;
+  }
+
+  .about h2 {
+    font-size: 26px;
+  }
+
+  .about-description {
+    font-size: 15px;
+  }
+
+  .about-list {
+    grid-template-columns: 1fr;
+  }
+}
+/* POPULAR COURSES SECTION */
+
+.courses {
+  padding: 70px 8%;
+  background: #ffffff;
+  text-align: center;
+}
+
+.courses h2 {
+  color: #1e3a8a;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.courses-description {
+  color: #64748b;
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.course-card {
+  padding: 32px 24px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.12);
+  border-color: #bfdbfe;
+}
+
+.course-card h3 {
+  color: #2563eb;
+  font-size: 21px;
+  margin-bottom: 15px;
+}
+
+.course-card p {
+  color: #64748b;
+  font-size: 15px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .courses {
+    padding: 45px 5%;
+  }
+
+  .courses h2 {
+    font-size: 26px;
+  }
+
+  .course-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+/* LOGIN PAGE */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe, #f8fafc);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 35px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 12px 35px rgba(30, 64, 175, 0.12);
+}
+
+.login-card h2 {
+  margin: 0 0 30px;
+  color: #1e3a8a;
+  font-size: 28px;
+  text-align: center;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-field label {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.login-field input,
+.login-field select {
+  width: 100%;
+  padding: 13px 14px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-field input:focus,
+.login-field select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.login-card form button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.login-card form button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 25px 20px;
+  }
+
+  .login-card h2 {
+    font-size: 24px;
+  }
+}
+/* Footer */
+.footer {
+  background: #183b32;
+  color: #ffffff;
+  padding: 50px 7% 0;
+  margin-top: 50px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 35px;
+}
+
+.footer h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.footer h2 span {
+  color: #48d6a0;
+}
+
+.footer h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+.footer p {
+  color: #d0ddd8;
+  line-height: 1.7;
+}
+
+.footer-links,
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.footer a {
+  color: #d0ddd8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #48d6a0;
+}
+
+.footer-bottom {
+  border-top: 1px solid #426157;
+  padding: 18px 0;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 650px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer {
+    padding: 35px 6% 0;
   }
 }
