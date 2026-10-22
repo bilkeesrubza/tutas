@@ -32,6 +32,7 @@ function App() {
   const [batches, setBatches] = useState([]);
   const [scheduledClasses, setScheduledClasses] = useState([]);
   const [teachers, setTeachers] = useState([]);
+  const [students, setStudents] = useState([]);
 
   return (
     <BrowserRouter>
@@ -47,14 +48,14 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard 
         batches={batches} setBatches={setBatches} 
         scheduledClasses={scheduledClasses} setScheduledClasses={setScheduledClasses}
-        teachers={teachers} setTeachers={setTeachers}
+        teachers={teachers} setTeachers={setTeachers}students={students} setStudents={setStudents}  
          />}/>
 
         <Route path="/teacher-dashboard" element={<TeacherDashboard  batches={batches} 
         scheduledClasses={scheduledClasses} teachers={teachers}
          />} />
 
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        <Route path="/student-dashboard" element={<StudentDashboard  students={students} batches={batches} scheduledClasses={scheduledClasses} teachers={teachers}    />} />
       </Routes>
     </BrowserRouter>
   );
